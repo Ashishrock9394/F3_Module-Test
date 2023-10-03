@@ -88,3 +88,19 @@ function postOfficeDetails(pin) {
             .catch((error) => console.log(error));
     }, 500);
 }
+
+function searchPost(){
+    var input = document.getElementById("searchBox");
+    var filter = input.value.toUpperCase();
+    var detail = document.getElementById("card");
+    var postData = detail.getElementsByClassName("grid-item");
+    for (i = 0; i < postData.length; i++) {
+        a = postData[i].getElementsByTagName("span")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            postData[i].style.display = "";
+        } else {
+            postData[i].style.display = "none";
+        }
+    }
+}
