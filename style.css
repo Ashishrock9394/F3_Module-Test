@@ -212,7 +212,7 @@ body.main .container{
 }
 .IpData{
     /* border: 1px solid white; */
-    width: 70vw;
+    width: 90vw;
     margin-top: 1rem;
     display:flex;
     /* margin: auto; */
@@ -267,20 +267,43 @@ font-size: 44px;
     border-radius: 10px;
     margin-top: 2rem;
 }
-.card{
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto;
+    background-color: black;
+    padding: 10px;
+    margin-top: 30px;
+  }
+  .grid-item {
+    background-color:#575A85;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 20px;
+    padding: 10px;
+    margin: 0 50px 20px 50px;
+    font-size: 30px;
+    text-align: center;
+  }
+  .grid-item>p{
+    color: rgb(193, 193, 193);
+  }
+  .grid-item span{
+    color: white;
+  }
+/* #card{
     margin-top: 2rem;
     width: auto ;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-}
-#box1, #box2{
-    /* border: 1px solid white; */
-    border-radius: 8px;
+} */
+/* .card-body{
     background-color: #575A85;
+    border: 1px solid white;
+    border-radius: 8px;
+    overflow: wrap;
     width: 40vw;
     margin-top: 1rem;   
-}
+} */
 /* --------------------------------------------MEDIA QUERY FOR 2ND PAGE--------------------------------------------------------------------------- */
 @media screen and (min-width: 320px) and (max-width: 480px){
     #text {

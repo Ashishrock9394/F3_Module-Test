@@ -26,7 +26,7 @@ function showDetails() {
                 // console.log(data.city);
             })
             .catch((error) => console.log(error));
-    }, 500); 
+    }, 500);
 }
 
 function showPost(data) {
@@ -35,7 +35,7 @@ function showPost(data) {
     const timezone = data.timezone;
     const pin = data.postal;
     const my_time_zone = new Date().toLocaleString("en-US", { timeZone: timezone });
-    
+
     document.body.classList.add('main');
     document.body.classList.remove('home');
 
@@ -47,30 +47,44 @@ function showPost(data) {
     document.getElementById("region").innerHTML = data.region;
     document.getElementById("org").innerHTML = data.org;
     document.getElementById("host").innerHTML = data.asn;
-    
+
     document.getElementById("googlemap").src = "https://maps.google.com/maps?q=" + lat + "," + long + "&z=15&output=embed";
     //maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed
-    
+
     document.getElementById("time").innerHTML = timezone;
     document.getElementById("date").innerHTML = my_time_zone;
     document.getElementById("pin").innerHTML = pin;
 
     postOfficeDetails(pin);
 
-    // document.getElementById("noOfPost").innerHTML = timezone;
-
 
 }
 
-function postOfficeDetails(pin){
+function postOfficeDetails(pin) {
     setTimeout(() => {
         fetch(`https://api.postalpincode.in/pincode/${pin}`)
             .then((response) => response.json())
             .then(data => {
-                console.log(data)
-                // console.log(data.city);
+                const postOffice = data[0].PostOffice;
+
+                const cardContainer = document.getElementById("card");
+
+                postOffice.forEach(element => {
+                    cardContainer.innerHTML += `
+                                        <div class="grid-item">
+                                        <p>Name: <span>${element.Name}</span></p>
+                                        <p>Branch Type: <span>${element.BranchType}</span></p>
+                                        <p>Delivery Status: <span>${element.DeliveryStatus}</span></p>
+                                        <p>District: <span>${element.District}</span></p>
+                                        <p>Division: <span>${element.Division}</span></p>
+                                        </div>
+                                        `;
+                });
+
+
+                document.getElementById("noOfPost").innerHTML = data[0].Message;
+
             })
             .catch((error) => console.log(error));
-    }, 500); 
+    }, 500);
 }
-
