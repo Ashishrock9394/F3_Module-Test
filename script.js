@@ -14,6 +14,8 @@ function showIp(ip) {
     ipDetails.innerHTML = ip;
 }
 
+// *** Landing page ***
+
 function showDetails() {
     const IP = ipDetails.innerText;
     // console.log(IP);
@@ -28,9 +30,28 @@ function showDetails() {
     }, 500);
 }
 
+function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(showPosition);
+    } else {
+      alert("Geolocation is not supported by this browser.");
+    }
+  }
+  function showPosition(position) {
+    var lat = position.coords.latitude;
+    var long = position.coords.longitude;
+    document.getElementById("googlemap").src = "https://maps.google.com/maps?q=" + lat + "," + long + "&z=15&output=embed";
+   
+    document.getElementById("lat").innerHTML = lat;
+    document.getElementById("long").innerHTML = long;
+    // console.log(position)
+    // map.setCenter(new google.maps.LatLng(lat, lng));
+  }
+
 function showPost(data) {
-    const lat = data.latitude;
-    const long = data.longitude;
+    getLocation();
+    // const lat = data.latitude;
+    // const long = data.longitude;
     const timezone = data.timezone;
     const pin = data.postal;
     const my_time_zone = new Date().toLocaleString("en-US", { timeZone: timezone });
@@ -40,14 +61,14 @@ function showPost(data) {
 
     document.getElementById("landingIP").innerHTML = data.ip;
 
-    document.getElementById("lat").innerHTML = lat;
-    document.getElementById("long").innerHTML = long;
+    // document.getElementById("lat").innerHTML = lat;
+    // document.getElementById("long").innerHTML = long;
     document.getElementById("city").innerHTML = data.city;
     document.getElementById("region").innerHTML = data.region;
     document.getElementById("org").innerHTML = data.org;
     document.getElementById("host").innerHTML = data.asn;
 
-    document.getElementById("googlemap").src = "https://maps.google.com/maps?q=" + lat + "," + long + "&z=15&output=embed";
+    // document.getElementById("googlemap").src = "https://maps.google.com/maps?q=" + lat + "," + long + "&z=15&output=embed";
     //maps.google.com/maps?q=53.3381768,-6.2613077&z=15&output=embed
 
     document.getElementById("time").innerHTML = timezone;
