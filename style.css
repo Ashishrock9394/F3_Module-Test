@@ -273,6 +273,9 @@ font-size: 44px;
     padding-left: 20px;
     margin-top: 2rem;
 }
+.searchBox i{
+    position: absolute;
+}
 .grid-container {
     display: grid;
     grid-template-columns: auto auto;
@@ -287,7 +290,7 @@ font-size: 44px;
     padding: 10px;
     margin: 0 50px 20px 50px;
     font-size: 30px;
-    text-align: center;
+    /* text-align: center; */
   }
   .grid-item>p{
     color: rgb(193, 193, 193);

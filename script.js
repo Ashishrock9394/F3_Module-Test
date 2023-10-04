@@ -6,7 +6,6 @@ function ipAddress() {
     fetch(`https://api.ipify.org?format=json`)
         .then((response) => response.json())
         .then(data => {
-            console.log(data);
             showIp(data.ip);
         })
         .catch((error) => console.log(error))
@@ -17,7 +16,7 @@ function showIp(ip) {
 
 function showDetails() {
     const IP = ipDetails.innerText;
-    console.log(IP);
+    // console.log(IP);
     setTimeout(() => {
         fetch(`https://ipapi.co/${IP}/json/`)
             .then((response) => response.json())
